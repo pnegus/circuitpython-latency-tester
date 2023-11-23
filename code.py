@@ -43,7 +43,7 @@ while True:
             mouse.press(Mouse.LEFT_BUTTON)
             time.sleep(0.01)
             mouse.release(Mouse.LEFT_BUTTON)
-            while (time.monotonic() - start_test_timestamp <= 0.5 and light_sensor.value <= initial_sensorvalue + max_deviation * 2):
+            while (time.monotonic() - start_test_timestamp <= 0.5 and light_sensor.value <= initial_sensorvalue + max_deviation * 1.25):
                 continue;
             latency = (time.monotonic() - start_test_timestamp) * 1000
             average_latency += latency
