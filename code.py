@@ -37,16 +37,16 @@ while True:
         num_miss = 0
         
         for i in range(num_runs):
-            start_test_timestamp = time.monotonic()
             mouse.press(Mouse.LEFT_BUTTON)
             time.sleep(0.01)
             mouse.release(Mouse.LEFT_BUTTON)
+            start_test_timestamp = time.monotonic()
             #gtg2% question mark?
             #might need to clamp sampling frequency
-            while (time.monotonic() - start_test_timestamp <= 0.25 and light_sensor.value <= initial_sensorvalue + 0.02 * initial_sensorvalue):
+            while (time.monotonic() - start_test_timestamp <= 0.1 and light_sensor.value <= initial_sensorvalue + 1.6 * initial_sensorvalue):
                 continue
             latency = (time.monotonic() - start_test_timestamp) * 1000
-            if latency >= 0.25:
+            if latency >= 0.1:
                 #ignore
                 num_miss += 1
                 continue
@@ -55,7 +55,7 @@ while True:
             time.sleep(0.5)
         
         print("Average latency over all runs:")
-        print(average_latency / (num_runs - num_miss)
+        print(average_latency / (num_runs - num_miss))
     else:
         led.value = True
     
