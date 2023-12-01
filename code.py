@@ -49,10 +49,9 @@ while True:
             if latency >= 0.1:
                 #ignore
                 num_miss += 1
-                continue
             else:
                 average_latency += latency
-            time.sleep(0.5)
+            time.sleep(0.25)
         
         print("Average latency over all runs:")
         print(average_latency / (num_runs - num_miss))
